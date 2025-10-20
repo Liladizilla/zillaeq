@@ -1,0 +1,9 @@
+build/
+.flutter_plugins
+.flutter_plugins_dependencies
+.packages
+.pub_cache/
+.idea/
+.ds_store
+Android/.gradle/
+Android/local.properties
