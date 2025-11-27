@@ -34,9 +34,11 @@ dependencies:
   audio_session: ^0.1.6
   permission_handler: ^11.3.0
   cupertino_icons: ^1.0.8
-  just_audio: ^0.9.33
+  just_audio: ^0.9.46
   shared_preferences: ^2.1.5
   flutter_xlider: ^3.5.0
+  flutter_web_plugins:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

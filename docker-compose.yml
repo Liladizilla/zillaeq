@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  flutter_build:
+    build: .
+    volumes:
+      - .:/app
+      - flutter_cache:/root/.cache/dart-pub
+    environment:
+      - GRADLE_USER_HOME=/app/.gradle_cache
+      - ANDROID_SDK_ROOT=/opt/android-sdk
+    command: flutter build apk --release --split-per-abi
+
+volumes:
+  flutter_cache:
