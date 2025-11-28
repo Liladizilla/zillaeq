@@ -137,10 +137,37 @@ class _EqualizerHomeState extends State<EqualizerHome> with SingleTickerProvider
 
   Future<bool> _requestStoragePermission() async {
     try {
-  final messenger = ScaffoldMessenger.of(context);
-  final status = await Permission.storage.request();
-  if (status.isGranted) return true;
-  messenger.showSnackBar(const SnackBar(content: Text('Storage permission is required to load local files')));
+      // Check current status first
+      var status = await Permission.storage.status;
+      if (status.isGranted) return true;
+
+      // Request permission explicitly
+      status = await Permission.storage.request();
+      if (status.isGranted) return true;
+
+      // If permanently denied, prompt user to open app settings
+      if (status.isPermanentlyDenied || status.isRestricted) {
+        if (!mounted) return false;
+        final open = await showDialog<bool>(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('Permission required'),
+            content: const Text('Storage access is required to pick local audio files. Open app settings to grant permission?'),
+            actions: [
+              TextButton(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Cancel')),
+              TextButton(onPressed: () => Navigator.of(ctx).pop(true), child: const Text('Open Settings')),
+            ],
+          ),
+        );
+        if (open == true) openAppSettings();
+        return false;
+      }
+
+      // Show a brief message explaining why permission is required
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Storage permission is required to load local files')));
+      }
+
       return false;
     } catch (e) {
       debugPrint('Permission request error: $e');
@@ -491,6 +518,6 @@ Widget _buildFooter() {
   }
 }
 
-class knobWidget {
-  const knobWidget();
+class KnobWidget {
+  const KnobWidget();
 }
