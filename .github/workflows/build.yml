@@ -22,7 +22,14 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'latest'
+          # Pin to the SDK this project targets so the CI is stable
+          flutter-version: '3.9.2'
+
+      - name: Verify Flutter & Java environment
+        run: |
+          flutter --version
+          flutter doctor -v
+          java -version
 
       - name: Get dependencies
         run: flutter pub get
