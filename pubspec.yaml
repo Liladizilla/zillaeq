@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   just_audio: ^0.9.46
   shared_preferences: ^2.1.5
-  flutter_xlider: ^3.5.0
   flutter_web_plugins:
     sdk: flutter
 
