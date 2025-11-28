@@ -5,7 +5,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:file_picker/file_picker.dart';
 import 'services/preset_store.dart';
 import 'services/equalizer_engine.dart';
-import 'services/app_globals.dart';
 import 'widgets/knob.dart';
 import 'widgets/app_logo.dart';
 import 'widgets/waveform.dart';
