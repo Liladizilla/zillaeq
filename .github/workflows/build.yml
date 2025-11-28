@@ -31,6 +31,30 @@ jobs:
           flutter doctor -v
           java -version
 
+      - name: Android SDK diagnostics
+        env:
+          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+        run: |
+          echo "PATH=$PATH"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          df -h .
+          ls -la $ANDROID_SDK_ROOT || true
+          which sdkmanager || true
+
+      - name: Install Android SDK packages
+        env:
+          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+        run: |
+          # Install required Android SDK components for building
+          set -eux
+          if which sdkmanager; then
+            yes | sdkmanager --licenses || true
+            sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+          else
+            echo "sdkmanager not found — printing environment for debugging"
+            env
+          fi
+
       - name: Get dependencies
         run: flutter pub get
 
