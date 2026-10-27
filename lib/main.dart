@@ -25,7 +25,7 @@ class EqualizerApp extends StatelessWidget {
     final base = ThemeData.dark();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Adizilla Equalizer',
+      title: 'CORE-EQ',
       theme: base.copyWith(
         scaffoldBackgroundColor: const Color(0xFF050D1F),
         appBarTheme: const AppBarTheme(
