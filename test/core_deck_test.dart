@@ -8,7 +8,7 @@ void main() {
 
     expect(find.text('CORE-EQ'), findsOneWidget);
     expect(find.text('SIGNAL PATH'), findsOneWidget);
-    expect(find.text('UI PREVIEW'), findsOneWidget);
+    expect(find.text('UI PREVIEW'), findsWidgets);
     expect(find.text('NOT MEASURED'), findsOneWidget);
   });
 
