@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/core_deck.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -40,7 +41,7 @@ class EqualizerApp extends StatelessWidget {
           secondary: Colors.blueAccent,
         ),
       ),
-      home: const EqualizerHome(),
+      home: const CoreDeckScreen(),
     );
   }
 }
