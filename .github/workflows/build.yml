@@ -22,8 +22,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          # Pin to the SDK this project targets so the CI is stable
-          flutter-version: '3.9.2'
+          # Use stable Flutter; pubspec.yaml constrains the required Dart SDK.
+          channel: 'stable'
 
       - name: Verify Flutter & Java environment
         run: |
@@ -57,6 +57,12 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Run Flutter tests
+        run: flutter test
+
+      - name: Analyze Dart code
+        run: flutter analyze
 
       - name: Build APK (Release)
         run: flutter build apk --release --split-per-abi
