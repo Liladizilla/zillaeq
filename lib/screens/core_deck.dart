@@ -26,6 +26,7 @@ class _CoreDeckScreenState extends State<CoreDeckScreen> {
   final gains = <double>[0, 2.5, -1.5, 1.2, .5, -.8, 1.8, 0, -1, .3];
   static const names = ['INPUT', 'PRE-EQ', 'DYN EQ', 'MBC', 'POST-EQ', 'BASS', 'WIDTH', 'LIMITER', 'OUTPUT'];
   static const details = ['Trim / gain', '10-band parametric', 'Frequency selective', 'Multiband dynamics', 'Tone shaping', 'Harmonic synthesis', 'Mid / side field', 'True peak ceiling', 'Level / balance'];
+  static const frequencyLabels = ['60', '120', '250', '500', '1k', '2k', '4k', '8k', '12k', '16k'];
   static const codes = ['IN', 'EQ', 'DY', 'MB', 'EQ', 'BS', 'ST', 'LM', 'OUT'];
   static const colors = [cyan, cyan, pink, pink, cyan, amber, cyan, amber, cyan];
 
@@ -131,7 +132,7 @@ class _CoreDeckScreenState extends State<CoreDeckScreen> {
       const Divider(height: 1, color: line),
       Padding(padding: const EdgeInsets.fromLTRB(12, 11, 12, 12), child: Column(children: [
         Row(children: [
-          readout('FREQUENCY', const ['60','120','250','500','1k','2k','4k','8k','12k','16k'][1 == 0 ? 0 : selected] + ' Hz'),
+          readout('FREQUENCY', frequencyLabels[selected] + ' Hz'),
           const SizedBox(width: 7),
           readout('GAIN', gains[selected].toStringAsFixed(1) + ' dB'),
           const SizedBox(width: 7),
